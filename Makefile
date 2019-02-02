@@ -34,14 +34,14 @@ OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 
 # Folder Lists
 # Note: Intentionally excludes the root of the include folder so the lists are clean
-INCDIRS := $(shell find include/**/* -name '*.h' -exec dirname {} \; | sort | uniq)
+INCDIRS := $(shell find include/* -name '*.h' -exec dirname {} \; | sort | uniq)
 INCLIST := $(patsubst include/%,-I include/%,$(INCDIRS))
 BUILDLIST := $(patsubst include/%,$(BUILDDIR)/%,$(INCDIRS))
 
 # Shared Compiler Flags
 CFLAGS := -c
 INC := -I include $(INCLIST) -I /usr/local/include
-LIB := -L /usr/local/lib -lsantacruzengine -lsantacruzlib -larcadia -lcorinth -lyaml-cpp -lzmq -lhiredis -lbondoas
+LIB := -L /usr/local/lib
 
 # Platform Specific Compiler Flags
 ifeq ($(UNAME_S),Linux)
@@ -56,21 +56,22 @@ else
 endif
 
 $(TARGET): $(OBJECTS)
-  @mkdir -p $(TARGETDIR)
-  @echo "Linking..."
-  @echo "  Linking $(TARGET)"; $(CC) $^ -o $(TARGET) $(LIB)
+	@mkdir -p $(TARGETDIR)
+	@echo "Linking..."
+	@echo "  Linking $(TARGET)"; $(CC) $^ -o $(TARGET) $(LIB)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
-  @mkdir -p $(BUILDLIST)
-  @echo "Compiling $<..."; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
+	@mkdir -p $(BUILDDIR)
+	@mkdir -p $(BUILDLIST)
+	@echo "Compiling $<..."; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
 clean:
-  @echo "Cleaning $(TARGET)..."; $(RM) -r $(BUILDDIR) $(TARGET)
+	@echo "Cleaning $(TARGET)..."; $(RM) -r $(BUILDDIR) $(TARGET)
 
 install:
-  @echo "Installing $(EXECUTABLE)..."; cp $(TARGET) $(INSTALLBINDIR)
+	@echo "Installing $(EXECUTABLE)..."; cp $(TARGET) $(INSTALLBINDIR)
   
 distclean:
-  @echo "Removing $(EXECUTABLE)"; rm $(INSTALLBINDIR)/$(EXECUTABLE)
+	@echo "Removing $(EXECUTABLE)"; rm $(INSTALLBINDIR)/$(EXECUTABLE)
 
 .PHONY: clean
