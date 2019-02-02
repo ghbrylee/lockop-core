@@ -13,10 +13,6 @@ Sensitive Data Storing System Using Blockchain for Secure.
 
 -
 
-### functions ###
-
--
-
 ## License ##
 
 -
