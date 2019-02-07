@@ -1,17 +1,18 @@
 #include <iostream>
-#include "block.h"
+#include "include/block.h"
 
 using namespace std;
 namespace lockop{
-    CBlockHeader::CBlockHeader(){
+    CBlockHeader::CBlockHeader()
         : mBlockNum(0)
         , mHash("")
         , mPreviousHash("")
         , mTimestamp(0)
+    {
     }
     
     int CBlockHeader::getBlockNum() const{
-        return nBlockNum;
+        return mBlockNum;
     }
 
     void CBlockHeader::setGenesisBlock() const{
