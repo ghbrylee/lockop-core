@@ -8,24 +8,23 @@
 
 #pragma once
 #include <string>
-class CBlockHeader{
-    public:
-        CBlockHeader();
-        ~CBlockHeader();
-    private:
-        std::string hash;
-        std::string previousHash;
-        int timestamp;
-        
-        
-};
 
-CBlockHeader::CBlockHeader(){
-    hash = "";
-    previousHash = "";
-    
-}
+namespace lockop{
+    const std::string genesisBlock = "ABCDEFG";
 
-CBlockHeader::~CBlockHeader(){
+    class CBlockHeader{
+        public:
+            CBlockHeader();
+            int getBlockNum() const;
+            void setGenesisBlock() const;
+
+        private:
+            int mBlockNum;
+            std::string mHash;
+            std::string mPreviousHash;
+            int mTimestamp;
+            
+            
+    };
 
 }
