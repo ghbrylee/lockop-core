@@ -10,21 +10,30 @@
 #include <string>
 
 namespace lockop{
-    const std::string genesisBlock = "ABCDEFG";
+    const std::string genesisBlock = "ABCDEFSKSKSDKDSKLSDKLG";
 
     class CBlockHeader{
         public:
             CBlockHeader();
             int getBlockNum() const;
             void setGenesisBlock() const;
+            int64_t getPreviousHash() const;
+            std::string& getBlockData();
 
         private:
             int mBlockNum;
-            std::string mHash;
-            std::string mPreviousHash;
+            int64_t mHash;
+            int64_t mPreviousHash;
             int mTimestamp;
-            
-            
+            std::string mBlockData;
+    };
+
+    class CBlockGenerate{
+        public:
+            void genesisBlockCheck() const;
+            void blockGenerator() const;
+
+        private:
     };
 
 }

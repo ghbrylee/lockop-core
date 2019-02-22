@@ -5,9 +5,10 @@ using namespace std;
 namespace lockop{
     CBlockHeader::CBlockHeader()
         : mBlockNum(0)
-        , mHash("")
-        , mPreviousHash("")
+        , mHash(0)
+        , mPreviousHash(0)
         , mTimestamp(0)
+        , mBlockData("")
     {
     }
     
@@ -15,8 +16,22 @@ namespace lockop{
         return mBlockNum;
     }
 
-    void CBlockHeader::setGenesisBlock() const{
-        
+    int64_t CBlockHeader::getPreviousHash() const{
+        return mPreviousHash;
     }
 
+    std::string& CBlockHeader::getBlockData(){
+        return mBlockData;
+    }
+
+    void CBlockGenerate::genesisBlockCheck() const{
+        if (genesisBlock == ""){
+            std::cout << "GenesisBlock hash is empty. Please create it first" << '\n';
+        }
+    
+    }
+
+    void CBlockGenerate::blockGenerator() const{
+        
+    }
 }
