@@ -9,23 +9,25 @@
 #pragma once
 #include <string>
 
-namespace lockop{
-    const std::string genesisBlock = "ABCDEFSKSKSDKDSKLSDKLG";
 
+static const unsigned int MAX_BLOCK_SIZE = 1000000;
+namespace lockop{
     class CBlockHeader{
         public:
             CBlockHeader();
-            int getBlockNum() const;
-            void setGenesisBlock() const;
-            int64_t getPreviousHash() const;
-            std::string& getBlockData();
+            uint8_t getBVersion;
+            int getHegiht;
+            uint64_t getHashPrevBlock;
+            uint64_t getHashMerkleRoot;
+            uint32_t getTime;
 
         private:
-            int mBlockNum;
-            int64_t mHash;
-            int64_t mPreviousHash;
-            int mTimestamp;
-            std::string mBlockData;
+            const uint8_t mVersion;
+            int mHeight;
+            uint64_t mHashPrevBlock;
+            uint64_t mHashMerkleRoot;
+            uint32_t mTime;
+            std::string mData;
     };
 
     class CBlockGenerate{
@@ -34,6 +36,6 @@ namespace lockop{
             void blockGenerator() const;
 
         private:
-    };
 
+    };
 }
