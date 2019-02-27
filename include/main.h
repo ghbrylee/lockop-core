@@ -5,26 +5,24 @@
 //  Created by 0xbrylee on 2019-02-01.
 //  Copyright (c) 2019 brylabs. All rights reserved.
 //
-
 #pragma once
 #include <string>
+#include <thread>
+#include <unistd.h>
 
 namespace lockop{
 
     class CMainParams{
         public:
             CMainParams();
-            void setNetworkID();
-            std::string& getNetwrokID();
+            std::string& getNode();
             uint8_t getStartMessage(int arrNum);
-            void setNodeSeeds();
         private:
-            const uint64_t networkPassphrase = 18446744073709551615;
-            std::string mStrNetworkID;
-            uint8_t mStartMessage;
-            uint16_t mDefaultPort;
-            std::string mNode1;
-            std::string mNode2;
+            const uint64_t mNetworkPassphrase;
+            const std::string mStrNetworkID;
+            const uint8_t mStartMessage;
+            const uint16_t mDefaultPort;
+            std::string mNode;
 
 
     };

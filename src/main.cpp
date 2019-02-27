@@ -5,45 +5,50 @@
 //  Created by 0xbrylee on 2019-02-01.
 //  Copyright (c) 2019 brylabs. All rights reserved.
 //
-#include "main.h"
-#include "block.h"
 #include <iostream>
+#include "main.h"
+#include "util.h"
+#include "block.h"
 
 using namespace std;
+using namespace lockop;
 
 namespace lockop{
     CMainParams::CMainParams()
-        : mStrNetworkID("ff")
+        : mNetworkPassphrase(18446744073709551615)
+        , mStrNetworkID("main")
         , mStartMessage(256)
-        , mDefaultPort(20201)
+        , mDefaultPort(25250)
+        , mNode("172.0.0.1")
     {
     }
 
-    void CMainParams::setNetworkID(){
-        mStrNetworkID = "main";
-    }
-
-    std::string& CMainParams::getNetwrokID(){
-        return mStrNetworkID;
+    std::string& CMainParams::getNode(){
+        return mNode;
     }
 
     uint8_t CMainParams::getStartMessage(int arrNum){
         return mStartMessage;
     }
+}
 
-    void CMainParams::setNodeSeeds(){
-        
+void test(){
+    for (int i=0; i<1000000; i++){
+        std:;cout << "[DEBUG] Generating block.....  #Block age count : " << i << "\n";
+        usleep(100000);
     }
-    
 }
-
 int main(void){
-//    CBlockHeader genesis;
-    lockop::CMainParams dm;
+    lockop::CLogManager util;
+    util.printLog("DEBUG", "Lockop-core world");
+    util.printLog("DEBUG", "Start to generate block ...");
+    
+    std::thread t1(generateBlock);
+    std::thread t2(checkerBlock);
+    //std::thread t3(test);
+    t1.join();
+    t2.join();
+    //t3.join();
 
-    std::cout << "[DEBUG] HELLO, Lockop-core world" << '\n' << std::endl;
-    std::cout << dm.getNetwrokID() << '\n' << std::endl;
-//    std::cout << genesis.getVersion() << '\n' << std::endl;
+    std::cout << "TSET";
 }
-
-

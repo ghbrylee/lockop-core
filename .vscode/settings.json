@@ -54,6 +54,9 @@
         "unordered_map": "cpp",
         "utility": "cpp",
         "vector": "cpp",
-        "hashtable": "cpp"
+        "hashtable": "cpp",
+        "thread": "cpp",
+        "numeric": "cpp",
+        "random": "cpp"
     }
 }
