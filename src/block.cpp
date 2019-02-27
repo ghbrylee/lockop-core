@@ -36,6 +36,15 @@ namespace lockop{
             util.printBlockAge("DEBUG", mLatestBlockAge);
         }
     }
+    
+    uint64_t CBlockManager::buildMerkleTree() const{
+        //build merkle tree
+    }
+    
+    uint64_t checkMerkleBranch() const{
+        //check mekrle branch
+    }
+
 
     void CBlockHeader::setHeight(){
         mHeight = mHeight + 1 ;
