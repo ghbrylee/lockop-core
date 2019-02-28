@@ -8,7 +8,6 @@
 #pragma once
 #include <string>
 #include <thread>
-#include <unistd.h>
 
 namespace lockop{
 

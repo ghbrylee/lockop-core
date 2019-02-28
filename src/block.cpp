@@ -27,13 +27,13 @@ namespace lockop{
     }
 
     void CBlockManager::blockAgeCalculator(){
-        CLogManager util;
+        CLogManager log;
 
         if (mLatestBlockAge > 5){
             mLatestBlockAge = 0;
         } else{
             mLatestBlockAge = mLatestBlockAge + 1;
-            util.printBlockAge("DEBUG", mLatestBlockAge);
+            log.printBlockAge("DEBUG", mLatestBlockAge);
         }
     }
     
@@ -41,7 +41,7 @@ namespace lockop{
         //build merkle tree
     }
     
-    uint64_t checkMerkleBranch() const{
+    uint64_t CBlockManager::checkMerkleBranch() const{
         //check mekrle branch
     }
 
@@ -71,52 +71,83 @@ namespace lockop{
     }
 
     void checkerBlock(){
-        while(true){
-            usleep(100000);
-            std::random_device rd;
-            std::mt19937 mersenne(rd()); 
 
-            std::uniform_int_distribution<> die(1, 6);
-            for (int count = 1; count <= 48; ++count)
-            {
-                std::cout << die(mersenne); // << "\t"; 
-                if (count % 6 == 0);
-                    //std::cout << "\n";
-            }
-            std::cout << "\n";
-        }
-
-        // 5614143346 5333461435 3221424411 6523112663 36222531
-        // 
     }
 
-    void generateBlock(){
-        CLogManager util;
+    void addBlock(){
+        CUtilManager util;
+        CLogManager log;
+        CTimeManager time;
         CBlockManager mn;
         CBlockHeader block;
 
-        util.printLog("DEBUG", "Start to generate block ...");
-        util.printBlock("DEBUG", block.getVersion(), block.getHeight(),
+        log.printText("DEBUG", "Block Info : ");
+        log.printBlock("DEBUG", block.getVersion(), block.getHeight(),
                                   block.getHashPrevBlock(), block.getHashMerkleRoot(),
                                   block.getTime()
-                        );
+                       );
 
         if(block.getHeight() == 0){
-            util.printLog("DEBUG", "Could not found genesis block.");
-            util.printLog("DEBUG", "Block Generating..");
-            while(true){
+            log.printText("DEBUG", "Could not found any block. Initializing the blockhain..");
+            //while(false){
+                log.printText("DEBUG", "Block Generating..");
                 usleep(BLCOK_CREATION_TIMESPAN);
-                
+
+
+                for (int i=0; i<20; i++){
+                    std::cout << sha256(32) << std::endl;
+                }
+
+                std::cout << "DEBUG " << util.generateUniqueNum() << std::endl;
+                std::cout << "DEBUG " << util.generateUniqueNum() << std::endl;
+                std::cout << "DEBUG " << util.generateUniqueNum() << std::endl;
+                std::cout << "DEBUG " << util.generateUniqueNum() << std::endl;
+
+                // vector
+                std::vector<int> vec;
+                std::vector<std::string> mv;
+                mv.push_back("abcd001");
+                mv.push_back("abcd002");
+                std::cout << "[DEBUG] vector back TT: " << mv[0] << std::endl;
+                /*
+                for (int i=0; i<20; i++){
+                    std::cout << "[DEBUG] vector" << i << " : " << vec[i] << std::endl;
+                }
+                */
+                //=========
                 block.setHeight();
-                util.printBlock("DEBUG", block.getVersion(), block.getHeight(),
+                log.printBlock("DEBUG", block.getVersion(), block.getHeight(),
                             block.getHashPrevBlock(), block.getHashMerkleRoot(),
                             block.getTime()
-                
-                );
-            }
+                               );
+                //vec.clear();
+            //}
         }
-
-
     }
+
+    std::string to_hex(unsigned char s){
+        stringstream ss;
+        ss << hex << (int) s;
+        return ss.str();
+    }
+
+    std::string sha256(int SHA256_DIGEST_SIZE){
+        CTimeManager time;
+        unsigned char hash[SHA256_DIGEST_SIZE];
+        uint32_t uniqueTime = time.getCurrentTimestamp();
+        std::string uniqueTimeStr = std::to_string(uniqueTime);
+
+        SHA256_CTX sha256;
+        SHA256_Init(&sha256);
+        SHA256_Update(&sha256, uniqueTimeStr.c_str(), uniqueTimeStr.length());
+        SHA256_Final(hash, &sha256);
+
+        string output = "";
+        for(int i = 0; i < SHA256_DIGEST_SIZE; i++) {
+            output += to_hex(hash[i]);
+        }
+        return output;
+    }
+
 
 }

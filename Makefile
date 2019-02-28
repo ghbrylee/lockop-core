@@ -10,7 +10,7 @@ UNAME_S := $(shell uname -s)
 
 # CC
 ifeq ($(UNAME_S),Darwin)
-  CC := clang++ -arch x86_64
+  CC := clang++ -arch x86_64 -lcrypto
 else
   CC := g++
 endif

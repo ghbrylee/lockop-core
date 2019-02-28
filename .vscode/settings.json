@@ -57,6 +57,9 @@
         "hashtable": "cpp",
         "thread": "cpp",
         "numeric": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "sstream": "cpp",
+        "iomanip": "cpp",
+        "fstream": "cpp"
     }
 }

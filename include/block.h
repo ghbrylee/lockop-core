@@ -7,17 +7,20 @@
 //
 #pragma once
 #include <string>
-#include <unistd.h>
-#include <thread>
-#include <ctime>
-#include <random>
+#include <unistd.h> // usleep
+#include <vector>
+#include <sstream> // to_hex()
+#include <openssl/sha.h> // sha256()
 
 static const unsigned int MAX_BLOCK_SIZE = 1000000;
-static const unsigned int BLCOK_CREATION_TIMESPAN = 3000000;
+static const unsigned int BLCOK_CREATION_TIMESPAN = 1000000;
 
 namespace lockop{
-    void generateBlock();
+    std::string to_hex(unsigned char s);
+    std::string sha256(int SHA256_DIGEST_SIZE);
+    void addBlock();
     void checkerBlock();
+    
     class CBlockManager{
         public:
             CBlockManager();
@@ -35,12 +38,12 @@ namespace lockop{
         public:
             CBlockHeader();
             void setHeight();
-            uint8_t getVersion();
-            uint64_t getHeight();
-            uint64_t getHashPrevBlock();
+            uint8_t getVersion(); // 255
+            uint64_t getHeight(); // 18446744073709551615
+            uint64_t getHashPrevBlock(); // 1844674407,3709551615
             uint64_t getHashMerkleRoot();
-            uint32_t getTime();
-
+            uint32_t getTime(); // 4294967295
+                            //uint16_t 65535
         private:
             const uint8_t mVersion;
             uint64_t mHeight;

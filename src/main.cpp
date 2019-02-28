@@ -38,17 +38,17 @@ void test(){
         usleep(100000);
     }
 }
-int main(void){
-    lockop::CLogManager util;
-    util.printLog("DEBUG", "Lockop-core world");
-    util.printLog("DEBUG", "Start to generate block ...");
-    
-    std::thread t1(generateBlock);
-    std::thread t2(checkerBlock);
-    //std::thread t3(test);
-    t1.join();
-    t2.join();
-    //t3.join();
 
-    std::cout << "TSET";
+int main(void){        
+    lockop::CLogManager log;
+    log.printText("DEBUG", "Lockop-core world");
+    
+    std::thread t1(addBlock);
+    t1.join();
+    /*
+    std::thread t2(checkerBlock);
+    std::thread t3(test);
+    t2.join();
+    t3.join();
+    */
 }
