@@ -9,15 +9,22 @@
 #include <string>
 #include <ctime>
 #include <random>
+#include <sstream> // stringstream
+#include <openssl/sha.h> // sha256()
+#include <iomanip> // sha256(), setw, setfill
 
 namespace lockop{
+
     class CUtilManager{
         public:
             CUtilManager();
-            uint64_t generateUniqueNum();
+            std::string& getUniqueNum(int dice_digestSize);
+            std::string getSha256Hash();
+            
         private:
-            uint64_t mUniqueNum;
-    };
+            std::string mUniqueNumStr;
+            std::stringstream resultHash;
+    }; 
 
     class CTimeManager{
         public:

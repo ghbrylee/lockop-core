@@ -9,15 +9,12 @@
 #include <string>
 #include <unistd.h> // usleep
 #include <vector>
-#include <sstream> // to_hex()
-#include <openssl/sha.h> // sha256()
+
 
 static const unsigned int MAX_BLOCK_SIZE = 1000000;
 static const unsigned int BLCOK_CREATION_TIMESPAN = 1000000;
 
 namespace lockop{
-    std::string to_hex(unsigned char s);
-    std::string sha256(int SHA256_DIGEST_SIZE);
     void addBlock();
     void checkerBlock();
     
@@ -29,9 +26,13 @@ namespace lockop{
             uint64_t buildMerkleTree() const;
             uint64_t getMerkleBranch() const;
             uint64_t checkMerkleBranch() const;
+            void addingVecBlock();
+            void getVecBlock(int i);
+            void clearVecBlock();
         private:
             uint8_t mLatestBlockAge;
             unsigned int mBlockCreationTimespan;
+            std::vector<std::string> blockchain;
     };
 
     class CBlockHeader{

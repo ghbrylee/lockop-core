@@ -11,6 +11,7 @@
 using namespace std;
 namespace lockop{
     CUtilManager::CUtilManager()
+        :mUniqueNumStr("")
     {
     }
 
@@ -22,30 +23,44 @@ namespace lockop{
     {
     }
 
-    uint64_t CUtilManager::generateUniqueNum(){
+    std::string& CUtilManager::getUniqueNum(int dice_digestSize){
+            std::string bindedResult;
             std::random_device rd;
             std::mt19937 mersenne(rd()); 
-            std::uniform_int_distribution<> die(1, 6);
-            for (int count = 1; count <= 30; ++count)
+            std::uniform_int_distribution<> die(0, 9);
+
+            this->mUniqueNumStr = ""; // Initialization
+            for (int count = 1; count <= dice_digestSize; ++count)
             {
-                this->mUniqueNum = die(mersenne);
+                bindedResult = std::to_string(die(mersenne));
+                this->mUniqueNumStr.append(bindedResult);
                 //if (count % 6 == 0);
             }
-            std::cout << this->mUniqueNum << std::endl;
-            return this->mUniqueNum;
-            
 
-            std::random_device rd;
-            std::mt19937 mersenne(rd()); 
-            std::uniform_int_distribution<> die(1, 6);
-            for (int count = 1; count <= 48; ++count)
-            {
-                std::cout << die(mersenne); // << "\t"; 
-                if (count % 6 == 0);
-                    //std::cout << "\n";
-            }
-            std::cout << "\n";
+            return this->mUniqueNumStr;
+    }
 
+    std::string CUtilManager::getSha256Hash()
+    {
+        CTimeManager time;
+
+        unsigned char hash[SHA256_DIGEST_LENGTH];
+        uint32_t uniqueTime = time.getCurrentTimestamp();
+        std::string uniqueTimeStr = std::to_string(uniqueTime);
+        std::string uniqueSeed = uniqueTimeStr.append(this->getUniqueNum(10));
+        
+        SHA256_CTX sha256;
+        SHA256_Init(&sha256);
+        SHA256_Update(&sha256, uniqueSeed.c_str(), uniqueSeed.size());
+        SHA256_Final(hash, &sha256);
+
+        this->resultHash.str(""); // Initialization
+        for(int i = 0; i < SHA256_DIGEST_LENGTH; i++)
+        {
+            this->resultHash << hex << setw(2) << setfill('0') << (int)hash[i];
+        }
+        
+        return this->resultHash.str();
     }
 
     uint32_t CTimeManager::getCurrentTimestamp(){
@@ -94,4 +109,31 @@ namespace lockop{
         std::cout << "[" << mType << "] " << mMessage << std::endl;
     }
 
+/*
+    std::string generateSha256Hash()
+    {
+        CUtilManager util;
+        CTimeManager time;
+        unsigned char hash[SHA256_DIGEST_LENGTH];
+        uint32_t uniqueTime = time.getCurrentTimestamp();
+        std::string uniqueTimeStr = std::to_string(uniqueTime);
+        std::string uniqueSeed = uniqueTimeStr.append(util.generateUniqueNum(10));
+
+        SHA256_CTX sha256;
+        SHA256_Init(&sha256);
+        SHA256_Update(&sha256, uniqueSeed.c_str(), uniqueSeed.size());
+        SHA256_Final(hash, &sha256);
+
+        stringstream ss;
+        for(int i = 0; i < SHA256_DIGEST_LENGTH; i++)
+        {
+            ss << hex << setw(2) << setfill('0') << (int)hash[i];
+        }
+        
+        return ss.str();
+    }
+    */
+
+
 }
+

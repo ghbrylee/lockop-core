@@ -70,8 +70,28 @@ namespace lockop{
         return mTime;
     }
 
-    void checkerBlock(){
+    void CBlockManager::addingVecBlock(){
+        this->blockchain.push_back("abc001"); 
+        this->blockchain.push_back("abc002");
+        this->blockchain.push_back("abc003"); 
+        this->blockchain.push_back("abc004"); 
+        this->blockchain.push_back("abc005"); 
+        this->blockchain.push_back("abc006"); 
+        this->blockchain.push_back("abc007"); 
+        this->blockchain.push_back("abc008"); 
+        this->blockchain.push_back("abc009"); 
+    }
 
+    void CBlockManager::getVecBlock(int i){
+        std::cout << "[DEBUG] " << blockchain[i] << std::endl;
+    }
+
+    void CBlockManager::clearVecBlock(){
+        this->blockchain.clear();
+    }
+
+    void checkerBlock(){
+        
     }
 
     void addBlock(){
@@ -93,61 +113,48 @@ namespace lockop{
                 log.printText("DEBUG", "Block Generating..");
                 usleep(BLCOK_CREATION_TIMESPAN);
 
-
-                for (int i=0; i<20; i++){
-                    std::cout << sha256(32) << std::endl;
+                mn.addingVecBlock();
+                for (int i=0; i<15; i++){
+                    mn.getVecBlock(i);
                 }
-
-                std::cout << "DEBUG " << util.generateUniqueNum() << std::endl;
-                std::cout << "DEBUG " << util.generateUniqueNum() << std::endl;
-                std::cout << "DEBUG " << util.generateUniqueNum() << std::endl;
-                std::cout << "DEBUG " << util.generateUniqueNum() << std::endl;
-
+                mn.clearVecBlock();
+                cout << "tt " << endl;
+                for (int i=0; i<15; i++){
+                    mn.getVecBlock(i);
+                }
+                
                 // vector
-                std::vector<int> vec;
-                std::vector<std::string> mv;
-                mv.push_back("abcd001");
-                mv.push_back("abcd002");
-                std::cout << "[DEBUG] vector back TT: " << mv[0] << std::endl;
                 /*
-                for (int i=0; i<20; i++){
-                    std::cout << "[DEBUG] vector" << i << " : " << vec[i] << std::endl;
-                }
+                std::vector<std::string> blockVersion;
+                std::vector<std::string> blockHeight;
+                std::vector<std::string> blockPrevBlock;
+                std::vector<std::string> blockMerkleRoot;
+                std::vector<std::string> blockTime;
+                std::vector<std::string> blockData;
                 */
-                //=========
                 block.setHeight();
                 log.printBlock("DEBUG", block.getVersion(), block.getHeight(),
                             block.getHashPrevBlock(), block.getHashMerkleRoot(),
                             block.getTime()
-                               );
+                              );
                 //vec.clear();
             //}
         }
     }
 
-    std::string to_hex(unsigned char s){
-        stringstream ss;
-        ss << hex << (int) s;
-        return ss.str();
-    }
-
-    std::string sha256(int SHA256_DIGEST_SIZE){
-        CTimeManager time;
-        unsigned char hash[SHA256_DIGEST_SIZE];
-        uint32_t uniqueTime = time.getCurrentTimestamp();
-        std::string uniqueTimeStr = std::to_string(uniqueTime);
-
-        SHA256_CTX sha256;
-        SHA256_Init(&sha256);
-        SHA256_Update(&sha256, uniqueTimeStr.c_str(), uniqueTimeStr.length());
-        SHA256_Final(hash, &sha256);
-
-        string output = "";
-        for(int i = 0; i < SHA256_DIGEST_SIZE; i++) {
-            output += to_hex(hash[i]);
-        }
-        return output;
-    }
 
 
 }
+//bitcoin
+//00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048
+//000000006a625f06636b8bb6ac7b960a8d03705d1ace08b1a19da3fdcc99ddbd
+//0000000082b5015589a3fdf2d4baff403e6f0be035a5d9742c1cae6295464449
+//000000004ebadb55ee9096c9a2f8880e09da59c0d68b1c228da88e48844a1485
+//0000 00009b7262 315dbf0717 87ad365609 7b892abffd 1f95a1a022 f896f533fc
+
+//stellar
+//0509d8d23a07b5bcdb759bd8b553c4d20bd4c8aa976bc0dbf3c973033b587c58
+//c2e76ad886078c0df6f208077abd9add39a8924f23472cf5d9b7594224d6d54f
+//4910a3dc1d84624522f59923dc5b01560ad49f8e0d776b51edbaeebb6f7d6cc6
+
+
