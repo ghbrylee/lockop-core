@@ -87,19 +87,20 @@ namespace lockop{
         std::cout << "[" << mType << "] " << mMessage << std::endl;
     }
 
-
+/*
     void CLogManager::printBlock(const std::string& type, uint8_t version,
-                                uint64_t height, uint64_t hashPrevBlock,
-                                uint64_t hashMerkleRoot, uint32_t time){ 
+                                uint64_t height, std::string& hashPrevBlock,
+                                std::string& hashMerkleRoot, uint32_t time){ 
         this->mType = type;
         this->mMessage = "(" + std::to_string(version) + ","
                              + std::to_string(height) + ","
-                             + std::to_string(hashPrevBlock) + ","
-                             + std::to_string(hashMerkleRoot) + ","
+                             + hashPrevBlock + ","
+                             + hashMerkleRoot + ","
                              + std::to_string(time)
                         + ")";
         std::cout << "[" << mType << "] " << mMessage << std::endl;
     }
+*/
 
     void CLogManager::printBlockAge(const std::string& type, uint8_t latestBlockAge){
         this->mType = type;

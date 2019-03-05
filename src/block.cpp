@@ -12,17 +12,10 @@
 using namespace std;
 namespace lockop{
     CBlockManager::CBlockManager()
-        : mLatestBlockAge(0)
     {
     }
 
-    CBlockHeader::CBlockHeader()
-        : mVersion(1)
-        , mHeight(0)
-        , mHashPrevBlock(0)
-        , mHashMerkleRoot(0)
-        , mTime(0)
-        , mData("0")
+    CBlockStorage::CBlockStorage()
     {
     }
 
@@ -37,61 +30,98 @@ namespace lockop{
         }
     }
     
+    void CBlockManager::buildNewBlock(){
+        CUtilManager util;
+        CLogManager log;
+        CBlockStorage block;
+
+        uint32_t height = block.getLatestHeight();
+        cout << "[DEBUG] Build new block : " << height << endl;
+        log.printText("DEBUG", "Check Point build new block");
+        
+        if (block.getLatestHeight() == 1){
+            log.printText("DEBUG", "Could not found Genesis Block.");
+            //block.setLatestHeight();
+
+            // new hash
+            std::string newHash;
+            newHash = util.getSha256Hash();
+            cout << "[DEUBG] new hash : " << newHash << endl;
+
+        } else{
+            log.printText("DEBUG", "Found a Genesis Block.");
+        }
+        
+
+    }
+
     uint64_t CBlockManager::buildMerkleTree() const{
-        //build merkle tree
+        //build merkle tree 
+
     }
     
     uint64_t CBlockManager::checkMerkleBranch() const{
         //check mekrle branch
     }
 
-
-    void CBlockHeader::setHeight(){
-        mHeight = mHeight + 1 ;
+    uint32_t CBlockStorage::getLatestHeight(){
+        this->mLatestHeight.push_back(0);
+        this->mLatestHeight.push_back(1);
+        uint32_t height = mLatestHeight.back();
+        cout << "[block] Latest Block Height : " << height << endl;
+        return height;
     }
 
-    uint8_t CBlockHeader::getVersion(){
-        return mVersion;
+    uint8_t CBlockStorage::getVersion(int index){
+        return this->mVersion[index];
     }
 
-    uint64_t CBlockHeader::getHeight(){
-        return mHeight;
+    std::string& CBlockStorage::getHashPrevBlock(int index){
+        return this->mHashPrevBlock[index];
     }
 
-    uint64_t CBlockHeader::getHashPrevBlock(){
-        return mHashPrevBlock;
+    std::string& CBlockStorage::getHashMerkleRoot(int index){
+        return this->mHashMerkleRoot[index];
     }
 
-    uint64_t CBlockHeader::getHashMerkleRoot(){
-        return mHashMerkleRoot;
+    uint32_t CBlockStorage::getTime(int index){
+        return this->mTime[index];
     }
 
-    uint32_t CBlockHeader::getTime(){
-        return mTime;
+    std::string& CBlockStorage::getData(int index){
+        return this->mData[index];
     }
 
-    void CBlockManager::addingVecBlock(){
-        this->blockchain.push_back("abc001"); 
-        this->blockchain.push_back("abc002");
-        this->blockchain.push_back("abc003"); 
-        this->blockchain.push_back("abc004"); 
-        this->blockchain.push_back("abc005"); 
-        this->blockchain.push_back("abc006"); 
-        this->blockchain.push_back("abc007"); 
-        this->blockchain.push_back("abc008"); 
-        this->blockchain.push_back("abc009"); 
+    void CBlockStorage::setLatestHeight(){
+        uint32_t latestHeight;
+        latestHeight = mLatestHeight.back();
+        latestHeight += 1;
+        this->mLatestHeight.push_back(latestHeight);
     }
 
-    void CBlockManager::getVecBlock(int i){
-        std::cout << "[DEBUG] " << blockchain[i] << std::endl;
+    void CBlockStorage::setVersion(){
+        this->mVersion.push_back(BLOCK_VERSION);
     }
 
-    void CBlockManager::clearVecBlock(){
-        this->blockchain.clear();
+    void CBlockStorage::setHashPrevBlock(std::string& hashPrevBlock){
+        this->mHashPrevBlock.push_back(hashPrevBlock);
     }
 
-    void checkerBlock(){
-        
+    void CBlockStorage::setHashMerkleRoot(std::string& hashMerkleRoot){
+        this->mHashMerkleRoot.push_back(hashMerkleRoot);
+    }
+
+    void CBlockStorage::setTime(uint32_t time){
+        this->mTime.push_back(time);
+    }
+
+    void CBlockStorage::setData(std::string& data){
+        this->mData.push_back(data);
+    }
+
+    void CBlockStorage::initest(){
+        this->mLatestHeight.push_back(0);
+        this->mLatestHeight.push_back(1);
     }
 
     void addBlock(){
@@ -99,52 +129,39 @@ namespace lockop{
         CLogManager log;
         CTimeManager time;
         CBlockManager mn;
-        CBlockHeader block;
-
+        CBlockStorage block;
+        
         log.printText("DEBUG", "Block Info : ");
-        log.printBlock("DEBUG", block.getVersion(), block.getHeight(),
-                                  block.getHashPrevBlock(), block.getHashMerkleRoot(),
-                                  block.getTime()
-                       );
-
-        if(block.getHeight() == 0){
+        block.initest(); // initialized
+        
+        if(block.getLatestHeight() == 1){
             log.printText("DEBUG", "Could not found any block. Initializing the blockhain..");
-            //while(false){
+            while(true){
                 log.printText("DEBUG", "Block Generating..");
-                usleep(BLCOK_CREATION_TIMESPAN);
-
-                mn.addingVecBlock();
-                for (int i=0; i<15; i++){
-                    mn.getVecBlock(i);
-                }
-                mn.clearVecBlock();
-                cout << "tt " << endl;
-                for (int i=0; i<15; i++){
-                    mn.getVecBlock(i);
-                }
+                //usleep(BLCOK_CREATION_TIMESPAN);
+                mn.buildNewBlock();
+                log.printText("DEBUG", "-----");
                 
-                // vector
-                /*
-                std::vector<std::string> blockVersion;
-                std::vector<std::string> blockHeight;
-                std::vector<std::string> blockPrevBlock;
-                std::vector<std::string> blockMerkleRoot;
-                std::vector<std::string> blockTime;
-                std::vector<std::string> blockData;
-                */
-                block.setHeight();
+                //vec.clear();
+            }
+        }
+        
+    
+
+    
+    }
+}
+
+
+
+
+/*
                 log.printBlock("DEBUG", block.getVersion(), block.getHeight(),
                             block.getHashPrevBlock(), block.getHashMerkleRoot(),
                             block.getTime()
                               );
-                //vec.clear();
-            //}
-        }
-    }
+*/
 
-
-
-}
 //bitcoin
 //00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048
 //000000006a625f06636b8bb6ac7b960a8d03705d1ace08b1a19da3fdcc99ddbd

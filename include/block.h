@@ -10,47 +10,72 @@
 #include <unistd.h> // usleep
 #include <vector>
 
-
+static const unsigned int BLOCK_VERSION = 10000;
 static const unsigned int MAX_BLOCK_SIZE = 1000000;
 static const unsigned int BLCOK_CREATION_TIMESPAN = 1000000;
 
 namespace lockop{
     void addBlock();
-    void checkerBlock();
     
     class CBlockManager{
         public:
             CBlockManager();
             void blockAgeCalculator();
-            uint64_t getHash() const;
+            void buildNewBlock();
             uint64_t buildMerkleTree() const;
             uint64_t getMerkleBranch() const;
             uint64_t checkMerkleBranch() const;
-            void addingVecBlock();
-            void getVecBlock(int i);
-            void clearVecBlock();
+
         private:
             uint8_t mLatestBlockAge;
             unsigned int mBlockCreationTimespan;
             std::vector<std::string> blockchain;
     };
 
+    class CBlockStorage{
+        public:
+            void initest();
+            CBlockStorage();
+            uint32_t getLatestHeight();
+            uint8_t getVersion(int index);
+            std::string& getHashPrevBlock(int index);
+            std::string& getHashMerkleRoot(int index);
+            uint32_t getTime(int index);
+            std::string& getData(int index);
+
+            void setLatestHeight();
+            void setVersion();
+            void setHashPrevBlock(std::string& hashPrevBlock);
+            void setHashMerkleRoot(std::string& hashMerkleRoot);
+            void setTime(uint32_t time);
+            void setData(std::string& data);
+
+        private:
+            static const std::vector<uint32_t> mLatestHeight;
+            std::vector<uint8_t> mVersion;
+            std::vector<std::string> mHashPrevBlock;
+            std::vector<std::string> mHashMerkleRoot;
+            std::vector<uint32_t> mTime;
+            std::vector<std::string> mData;
+    };
+
+    /*
     class CBlockHeader{
         public:
             CBlockHeader();
-            void setHeight();
-            uint8_t getVersion(); // 255
-            uint64_t getHeight(); // 18446744073709551615
-            uint64_t getHashPrevBlock(); // 1844674407,3709551615
-            uint64_t getHashMerkleRoot();
-            uint32_t getTime(); // 4294967295
-                            //uint16_t 65535
+            uint64_t getLatestHeight();
+            uint8_t getVersion();
+            std::string& getHashPrevBlock();
+            std::string& getHashMerkleRoot();
+            uint32_t getTime();
+            std::string mData();
+
         private:
             const uint8_t mVersion;
-            uint64_t mHeight;
-            uint64_t mHashPrevBlock;
-            uint64_t mHashMerkleRoot;
+            std::string mHashPrevBlock;
+            std::string mHashMerkleRoot;
             uint32_t mTime;
             std::string mData;
     };
+    */
 }
