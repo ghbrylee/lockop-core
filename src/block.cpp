@@ -39,14 +39,17 @@ namespace lockop{
         cout << "[DEBUG] Build new block : " << height << endl;
         log.printText("DEBUG", "Check Point build new block");
         
-        if (block.getLatestHeight() == 1){
+        if (block.getLatestHeight() <= 1){
             log.printText("DEBUG", "Could not found Genesis Block.");
             //block.setLatestHeight();
 
             // new hash
             std::string newHash;
             newHash = util.getSha256Hash();
-            cout << "[DEUBG] new hash : " << newHash << endl;
+            cout << "[DEUBG] Hash : " << newHash << endl;
+            
+            block.setLatestHeight();
+            log.printText("DEBUG", "Check point 001");
 
         } else{
             log.printText("DEBUG", "Found a Genesis Block.");
@@ -93,10 +96,15 @@ namespace lockop{
     }
 
     void CBlockStorage::setLatestHeight(){
+        this->mLatestHeight.push_back(101);
+        this->mLatestHeight.push_back(102);
         uint32_t latestHeight;
-        latestHeight = mLatestHeight.back();
-        latestHeight += 1;
-        this->mLatestHeight.push_back(latestHeight);
+        latestHeight = this->mLatestHeight.back();
+        cout << "[DEBUG] latestHeight1 : " << this->mLatestHeight.back() << endl;
+        latestHeight = latestHeight + 1;
+        cout << "[DEBUG] latestHeight2 : " << latestHeight << endl;
+        this->mLatestHeight.push_back(3);
+        cout << "[DEBUG] checkpoint 002" << endl;
     }
 
     void CBlockStorage::setVersion(){
@@ -120,8 +128,10 @@ namespace lockop{
     }
 
     void CBlockStorage::initest(){
-        this->mLatestHeight.push_back(0);
-        this->mLatestHeight.push_back(1);
+        this->mLatestHeight.push_back(101);
+        cout << "Array 0 : " << mLatestHeight[0] << endl;
+        this->mLatestHeight.push_back(102);
+        cout << "Array 1 : " << mLatestHeight[1] << endl;
     }
 
     void addBlock(){
@@ -138,7 +148,7 @@ namespace lockop{
             log.printText("DEBUG", "Could not found any block. Initializing the blockhain..");
             while(true){
                 log.printText("DEBUG", "Block Generating..");
-                //usleep(BLCOK_CREATION_TIMESPAN);
+                usleep(BLCOK_CREATION_TIMESPAN);
                 mn.buildNewBlock();
                 log.printText("DEBUG", "-----");
                 

@@ -51,7 +51,7 @@ namespace lockop{
             void setData(std::string& data);
 
         private:
-            static const std::vector<uint32_t> mLatestHeight;
+            std::vector<uint32_t> mLatestHeight;
             std::vector<uint8_t> mVersion;
             std::vector<std::string> mHashPrevBlock;
             std::vector<std::string> mHashMerkleRoot;
