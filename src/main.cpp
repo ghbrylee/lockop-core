@@ -39,7 +39,7 @@ void test(){
     }
 }
 
-int main(void){        
+int main(void){
     lockop::CLogManager log;
     log.printText("DEBUG", "Lockop-core world");
     

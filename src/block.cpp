@@ -30,11 +30,15 @@ namespace lockop{
         }
     }
     
-    void CBlockManager::buildNewBlock(){
+    void CBlockStorage::buildNewBlock(CBlockStorage* pblock){
         CUtilManager util;
         CLogManager log;
         CBlockStorage block;
-
+        
+        //block.initest();
+        cout << "TEST0 : " << pblock->getLatestHeight() << endl;
+        cout << "TEST1 : " << block.getLatestHeight() << endl;
+/*
         uint32_t height = block.getLatestHeight();
         cout << "[DEBUG] Build new block : " << height << endl;
         log.printText("DEBUG", "Check Point build new block");
@@ -54,7 +58,7 @@ namespace lockop{
         } else{
             log.printText("DEBUG", "Found a Genesis Block.");
         }
-        
+        */
 
     }
 
@@ -68,11 +72,21 @@ namespace lockop{
     }
 
     uint32_t CBlockStorage::getLatestHeight(){
-        this->mLatestHeight.push_back(0);
-        this->mLatestHeight.push_back(1);
-        uint32_t height = mLatestHeight.back();
-        cout << "[block] Latest Block Height : " << height << endl;
-        return height;
+        this->mLatestHeight.push_back(401);
+        cout << "push_back 4(back)" << endl;
+        int back = this->mLatestHeight.back();
+        cout << "push_back 4-1 : " << back << endl;
+        this->mLatestHeight.push_back(401);
+        this->mLatestHeight.push_back(402);
+        this->mLatestHeight.push_back(403);
+        cout << "push_back 1" << endl;
+        cout << "push_back 1-0 : " << this->mLatestHeight[0] << endl;
+        cout << "push_back 1-1 : " << this->mLatestHeight[1] << endl;
+        cout << "push_back 1-2 : " << this->mLatestHeight[2] << endl;
+        cout << "push_back 1-3 : " << this->mLatestHeight[3] << endl;
+        cout << "push_back 1-4 : " << this->mLatestHeight[4] << endl;
+        cout << "push_back 1-5 : " << this->mLatestHeight[5] << endl;
+        cout << "push_back 1-6 : " << this->mLatestHeight[6] << endl;
     }
 
     uint8_t CBlockStorage::getVersion(int index){
@@ -96,15 +110,28 @@ namespace lockop{
     }
 
     void CBlockStorage::setLatestHeight(){
-        this->mLatestHeight.push_back(101);
-        this->mLatestHeight.push_back(102);
-        uint32_t latestHeight;
-        latestHeight = this->mLatestHeight.back();
-        cout << "[DEBUG] latestHeight1 : " << this->mLatestHeight.back() << endl;
-        latestHeight = latestHeight + 1;
-        cout << "[DEBUG] latestHeight2 : " << latestHeight << endl;
-        this->mLatestHeight.push_back(3);
-        cout << "[DEBUG] checkpoint 002" << endl;
+    /*
+        cout << "In setfunction -> get function : " << getLatestHeight() << endl;
+        uint32_t latestHeight = getLatestHeight();
+        latestHeight += 1;
+        this->mLatestHeight.push_back(latestHeight);
+*/
+
+        this->mLatestHeight.push_back(302);
+        this->mLatestHeight.push_back(303);
+        this->mLatestHeight.push_back(304);
+        cout << "push_back 2" << endl;
+        cout << "push_back 2-0 : " << this->mLatestHeight[0] << endl;
+        cout << "push_back 2-1 : " << this->mLatestHeight[1] << endl;
+        cout << "push_back 2-2 : " << this->mLatestHeight[2] << endl;
+        cout << "push_back 2-3 : " << this->mLatestHeight[3] << endl;
+        cout << "push_back 2-4 : " << this->mLatestHeight[4] << endl;
+        cout << "push_back 2-5 : " << this->mLatestHeight[5] << endl;
+        cout << "push_back 2-6 : " << this->mLatestHeight[6] << endl;
+        cout << "push_back 3(back)" << endl;
+        int back = this->mLatestHeight.back();
+        cout << "push_back 3-1 : " << back << endl;
+
     }
 
     void CBlockStorage::setVersion(){
@@ -128,10 +155,7 @@ namespace lockop{
     }
 
     void CBlockStorage::initest(){
-        this->mLatestHeight.push_back(101);
-        cout << "Array 0 : " << mLatestHeight[0] << endl;
-        this->mLatestHeight.push_back(102);
-        cout << "Array 1 : " << mLatestHeight[1] << endl;
+        this->mLatestHeight.push_back(0);
     }
 
     void addBlock(){
@@ -140,10 +164,32 @@ namespace lockop{
         CTimeManager time;
         CBlockManager mn;
         CBlockStorage block;
-        
+
+        CBlockStorage* pblock;
+        pblock = &block;
+
+        block.buildNewBlock(&block);
+        /*
         log.printText("DEBUG", "Block Info : ");
-        block.initest(); // initialized
+        //block.initest();
+        cout << "TEST1 : " << block.getLatestHeight() << endl;
+        cout << "[TEST] pointer1 : " << pblock->getLatestHeight() << endl;
         
+        block.setLatestHeight();
+
+        cout << "TEST2 : " << block.getLatestHeight() << endl;
+        cout << "[TEST] pointer2 : " << pblock->getLatestHeight() << endl;
+
+        if(block.getLatestHeight() == 1){
+            while(true){
+                usleep(BLCOK_CREATION_TIMESPAN);
+                block.buildNewBlock(&block);
+            }
+        }
+        */
+
+        //block.initest(); // initialized
+/*
         if(block.getLatestHeight() == 1){
             log.printText("DEBUG", "Could not found any block. Initializing the blockhain..");
             while(true){
@@ -155,7 +201,7 @@ namespace lockop{
                 //vec.clear();
             }
         }
-        
+        */
     
 
     

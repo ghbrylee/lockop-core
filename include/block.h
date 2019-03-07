@@ -21,7 +21,6 @@ namespace lockop{
         public:
             CBlockManager();
             void blockAgeCalculator();
-            void buildNewBlock();
             uint64_t buildMerkleTree() const;
             uint64_t getMerkleBranch() const;
             uint64_t checkMerkleBranch() const;
@@ -35,6 +34,7 @@ namespace lockop{
     class CBlockStorage{
         public:
             void initest();
+            void buildNewBlock(CBlockStorage* pblock);
             CBlockStorage();
             uint32_t getLatestHeight();
             uint8_t getVersion(int index);
