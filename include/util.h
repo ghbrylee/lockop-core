@@ -9,7 +9,6 @@
 #include <string>
 #include <ctime>
 #include <random>
-#include <sstream> // stringstream
 #include <openssl/sha.h> // sha256()
 #include <iomanip> // sha256(), setw, setfill
 
@@ -19,11 +18,9 @@ namespace lockop{
         public:
             CUtilManager();
             std::string& getUniqueNum(int dice_digestSize);
-            std::string getSha256Hash();
             
         private:
             std::string mUniqueNumStr;
-            std::stringstream resultHash;
     }; 
 
     class CTimeManager{

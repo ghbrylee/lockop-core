@@ -8,6 +8,7 @@
 #pragma once
 #include <string>
 #include <unistd.h> // usleep
+#include <sstream> // stringstream
 #include <vector>
 
 static const unsigned int BLOCK_VERSION = 10000;
@@ -16,32 +17,27 @@ static const unsigned int BLCOK_CREATION_TIMESPAN = 1000000;
 
 namespace lockop{
     void addBlock();
-    
+
     class CBlockManager{
         public:
             CBlockManager();
             void blockAgeCalculator();
-            uint64_t buildMerkleTree() const;
-            uint64_t getMerkleBranch() const;
-            uint64_t checkMerkleBranch() const;
+            std::string buildBlockHash();
 
         private:
             uint8_t mLatestBlockAge;
-            unsigned int mBlockCreationTimespan;
-            std::vector<std::string> blockchain;
+            std::stringstream mResultHash;
     };
 
     class CBlockStorage{
         public:
-            void initest();
-            void buildNewBlock(CBlockStorage* pblock);
             CBlockStorage();
             uint32_t getLatestHeight();
-            uint8_t getVersion(int index);
-            std::string& getHashPrevBlock(int index);
-            std::string& getHashMerkleRoot(int index);
-            uint32_t getTime(int index);
-            std::string& getData(int index);
+            uint8_t getVersion(int nIndex);
+            std::string& getHashPrevBlock(int nIndex);
+            std::string& getHashMerkleRoot(int nIndex);
+            uint32_t getTime(int nIndex);
+            std::string& getData(int nIndex);
 
             void setLatestHeight();
             void setVersion();
@@ -58,24 +54,5 @@ namespace lockop{
             std::vector<uint32_t> mTime;
             std::vector<std::string> mData;
     };
-
-    /*
-    class CBlockHeader{
-        public:
-            CBlockHeader();
-            uint64_t getLatestHeight();
-            uint8_t getVersion();
-            std::string& getHashPrevBlock();
-            std::string& getHashMerkleRoot();
-            uint32_t getTime();
-            std::string mData();
-
-        private:
-            const uint8_t mVersion;
-            std::string mHashPrevBlock;
-            std::string mHashMerkleRoot;
-            uint32_t mTime;
-            std::string mData;
-    };
-    */
+    
 }

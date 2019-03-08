@@ -5,6 +5,44 @@
 //  Created by 0xbrylee on 2019-02-02.
 //  Copyright (c) 2019 brylabs. All rights reserved.
 //
+#include <iostream>
+#include "address.h"
+#include "util.h"
+
+using namespace std;
+namespace lockop{
+    CAddressManager::CAddressManager()
+    {
+    }
+
+    std::string& getAddress(){
+        // get address
+    }
+
+    std::string CAddressManager::generateAddress(){
+        CTimeManager time;
+        CUtilManager util;
+
+        unsigned char hash[SHA256_DIGEST_LENGTH];
+        uint32_t uniqueTime = time.getCurrentTimestamp();
+        std::string uniqueTimeStr = std::to_string(uniqueTime);
+        std::string uniqueSeed = uniqueTimeStr.append(util.getUniqueNum(10));
+        
+        SHA256_CTX sha256;
+        SHA256_Init(&sha256);
+        SHA256_Update(&sha256, uniqueSeed.c_str(), uniqueSeed.size());
+        SHA256_Final(hash, &sha256);
+
+        this->mRsultAddress.str(""); // Initialization
+        for(int i = 0; i < SHA256_DIGEST_LENGTH; i++)
+        {
+            this->mRsultAddress << hex << setw(2) << setfill('0') << (int)hash[i];
+        }
+        
+        return this->mRsultAddress.str();
+    }
+
+}
 
 // ** Below public and private key is example for test. Empty addresses.
 
@@ -23,5 +61,5 @@
 //GCVFWJZZMPCHTSEVUNEROS5TD6H2473IVIX32G2ARZQ4XGCNHB6JKZBA
 //SD2HTGC7PWMICJT2TZ5U2IOBTVXZ2EEFRJC3UBGSJVBQ26AESKXQCKNY
 
-//GCD7XLDEIYZZ3LUIJMOAYMRN3CJZLW2MGLQRPMFNE35DBONBBYKJAED5
+//GCD7XL DEIYZZ3LUI JMOAYMRN3C JZLW2MGLQR PMFNE35DBO NBBYKJAED5
 //SBIXDTWMLISDA6Z6DX4CJQ2FWLKTWD4A4NATQTDEQ3QWIQXQCEH2BWNQ
