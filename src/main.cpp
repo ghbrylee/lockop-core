@@ -9,6 +9,7 @@
 #include "main.h"
 #include "util.h"
 #include "block.h"
+#include "address.h"
 
 using namespace std;
 using namespace lockop;
@@ -43,8 +44,14 @@ int main(void){
     lockop::CLogManager log;
     log.printText("DEBUG", "Lockop-core world");
     
-    std::thread t1(addBlock);
-    t1.join();
+    //std::thread t1(addBlock);
+    //t1.join();
+
+    lockop::CAddressManager address;
+    cout << "[DEBUG] " << "address generator : " << address.generateAddress() << endl;
+    
+
+
     /*
     std::thread t2(checkerBlock);
     std::thread t3(test);

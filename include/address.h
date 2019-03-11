@@ -7,15 +7,17 @@
 //
 #pragma once
 #include <sstream> // stringstream
+#include <string>
 
 namespace lockop{
     class CAddressManager{
         public:
             CAddressManager();
-            std::string& getAddress();
+            std::stringstream& getAddress();
             std::string generateAddress();
         private:
-            std::stringstream mRsultAddress;
+            std::stringstream mRsultPrivateKey;
+            std::stringstream mResultPublicKey;
     };
 }
 

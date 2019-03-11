@@ -15,8 +15,10 @@ namespace lockop{
     {
     }
 
-    std::string& getAddress(){
+    std::stringstream& CAddressManager::getAddress(){
         // get address
+        cout << "TEST " << this->mRsultPrivateKey.str() << endl;
+     
     }
 
     std::string CAddressManager::generateAddress(){
@@ -25,21 +27,26 @@ namespace lockop{
 
         unsigned char hash[SHA256_DIGEST_LENGTH];
         uint32_t uniqueTime = time.getCurrentTimestamp();
-        std::string uniqueTimeStr = std::to_string(uniqueTime);
-        std::string uniqueSeed = uniqueTimeStr.append(util.getUniqueNum(10));
+        std::string uniqueSeed = "94EE059335E587E501CC4BF90613E0814F00A7B08BC7C648FD865A2AF6A22CC2";
+        //std::string uniqueTimeStr = std::to_string(uniqueTime);
+        //std::string uniqueSeed = uniqueTimeStr.append(util.getUniqueNum(10));
         
         SHA256_CTX sha256;
         SHA256_Init(&sha256);
         SHA256_Update(&sha256, uniqueSeed.c_str(), uniqueSeed.size());
         SHA256_Final(hash, &sha256);
 
-        this->mRsultAddress.str(""); // Initialization
+        this->mRsultPrivateKey.str(""); // Initialization
         for(int i = 0; i < SHA256_DIGEST_LENGTH; i++)
-        {
-            this->mRsultAddress << hex << setw(2) << setfill('0') << (int)hash[i];
+        {   
+            cout << "[DEBUG] " << endl;
+            this->mRsultPrivateKey << hex << setw(2) << setfill('0') << (int)hash[i];
         }
         
-        return this->mRsultAddress.str();
+        std::string test = this->mRsultPrivateKey.str();
+        std::transform(test.begin(), test.end(), test.begin(), ::toupper);
+        return test;
+        
     }
 
 }
