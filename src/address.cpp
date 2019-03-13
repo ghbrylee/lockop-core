@@ -27,15 +27,15 @@ namespace lockop{
 
         unsigned char hash[SHA256_DIGEST_LENGTH];
         uint32_t uniqueTime = time.getCurrentTimestamp();
-        std::string uniqueSeed = "94EE059335E587E501CC4BF90613E0814F00A7B08BC7C648FD865A2AF6A22CC2";
+        std::string uniqueSeed = "00f24a5851e9372b87810a8e60cdd2e7cfd80b6e31";
         //std::string uniqueTimeStr = std::to_string(uniqueTime);
         //std::string uniqueSeed = uniqueTimeStr.append(util.getUniqueNum(10));
-        
+        //7694 3b6ab625b4 bf97c99dcd 865cadd716 5b680ce66e 6482a0e8bf ee783198e0
         SHA256_CTX sha256;
         SHA256_Init(&sha256);
         SHA256_Update(&sha256, uniqueSeed.c_str(), uniqueSeed.size());
         SHA256_Final(hash, &sha256);
-
+//25162A752BF7DAAE72EAAF693675DAC589D6B0542FDA7A9F67EB5D7D9AF8D5D6
         this->mRsultPrivateKey.str(""); // Initialization
         for(int i = 0; i < SHA256_DIGEST_LENGTH; i++)
         {   
