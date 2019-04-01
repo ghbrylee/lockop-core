@@ -26,7 +26,6 @@ namespace lockop{
 
         private:
             uint8_t mLatestBlockAge;
-            std::stringstream mResultHash;
     };
 
     class CBlockStorage{

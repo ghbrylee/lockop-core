@@ -13,7 +13,6 @@
 #include <iomanip> // sha256(), setw, setfill
 
 namespace lockop{
-
     class CUtilManager{
         public:
             CUtilManager();

@@ -80,13 +80,14 @@ namespace lockop{
         SHA256_Update(&sha256, uniqueSeed.c_str(), uniqueSeed.size());
         SHA256_Final(hash, &sha256);
 
-        this->mResultHash.str(""); // Initialization
+        std::stringstream res;
+        res.str(""); // Initialization
         for(int i = 0; i < SHA256_DIGEST_LENGTH; i++)
         {
-            this->mResultHash << hex << setw(2) << setfill('0') << (int)hash[i];
+            res << hex << setw(2) << setfill('0') << (int)hash[i];
         }
         
-        return this->mResultHash.str();
+        return res.str();
     }
 
     uint32_t CBlockStorage::getLatestHeight(){
