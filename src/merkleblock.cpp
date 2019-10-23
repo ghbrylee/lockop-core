@@ -10,6 +10,7 @@
 
 using namespace std;
 namespace lockop{
+    /*
     CMerkleTreeManager::CMerkleTreeManager()
     {
     }
@@ -25,4 +26,5 @@ namespace lockop{
     uint64_t CMerkleTreeManager::checkMerkleBranch() const{
 
     }
+     */
 }

@@ -1,0 +1,362 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7904966F2360C7AC00494732 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 790496672360C7AB00494732 /* Makefile */; };
+		790496702360C7AC00494732 /* address.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790496692360C7AB00494732 /* address.cpp */; };
+		790496712360C7AC00494732 /* base58.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7904966A2360C7AB00494732 /* base58.cpp */; };
+		790496722360C7AC00494732 /* block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7904966B2360C7AB00494732 /* block.cpp */; };
+		790496732360C7AC00494732 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7904966C2360C7AB00494732 /* main.cpp */; };
+		790496742360C7AC00494732 /* merkleblock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7904966D2360C7AB00494732 /* merkleblock.cpp */; };
+		790496752360C7AC00494732 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7904966E2360C7AB00494732 /* util.cpp */; };
+		790496762360C91E00494732 /* block.h in Sources */ = {isa = PBXBuildFile; fileRef = 790496632360C7AB00494732 /* block.h */; };
+		797DEEA02360C78400B060CF /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 797DEE9F2360C78400B060CF /* IOKit.framework */; };
+		797DEEA22360C78A00B060CF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 797DEEA12360C78A00B060CF /* CoreFoundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		797DEE922360C76F00B060CF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		790496602360C7AB00494732 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		790496622360C7AB00494732 /* address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = address.h; sourceTree = "<group>"; };
+		790496632360C7AB00494732 /* block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = block.h; sourceTree = "<group>"; };
+		790496642360C7AB00494732 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		790496652360C7AB00494732 /* merkleblock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = merkleblock.h; sourceTree = "<group>"; };
+		790496662360C7AB00494732 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
+		790496672360C7AB00494732 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		790496692360C7AB00494732 /* address.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = address.cpp; sourceTree = "<group>"; };
+		7904966A2360C7AB00494732 /* base58.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base58.cpp; sourceTree = "<group>"; };
+		7904966B2360C7AB00494732 /* block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = block.cpp; sourceTree = "<group>"; };
+		7904966C2360C7AB00494732 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		7904966D2360C7AB00494732 /* merkleblock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = merkleblock.cpp; sourceTree = "<group>"; };
+		7904966E2360C7AB00494732 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
+		797DEE942360C76F00B060CF /* lockop-core */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "lockop-core"; sourceTree = BUILT_PRODUCTS_DIR; };
+		797DEE9F2360C78400B060CF /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		797DEEA12360C78A00B060CF /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		797DEE912360C76F00B060CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				797DEEA22360C78A00B060CF /* CoreFoundation.framework in Frameworks */,
+				797DEEA02360C78400B060CF /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		790496612360C7AB00494732 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				790496622360C7AB00494732 /* address.h */,
+				790496632360C7AB00494732 /* block.h */,
+				790496642360C7AB00494732 /* main.h */,
+				790496652360C7AB00494732 /* merkleblock.h */,
+				790496662360C7AB00494732 /* util.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		790496682360C7AB00494732 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				790496692360C7AB00494732 /* address.cpp */,
+				7904966A2360C7AB00494732 /* base58.cpp */,
+				7904966B2360C7AB00494732 /* block.cpp */,
+				7904966C2360C7AB00494732 /* main.cpp */,
+				7904966D2360C7AB00494732 /* merkleblock.cpp */,
+				7904966E2360C7AB00494732 /* util.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		797DEE8B2360C76F00B060CF = {
+			isa = PBXGroup;
+			children = (
+				797DEEA32360C78C00B060CF /* lockop-core */,
+				797DEE952360C76F00B060CF /* Products */,
+				797DEE9E2360C78400B060CF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		797DEE952360C76F00B060CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				797DEE942360C76F00B060CF /* lockop-core */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		797DEE9E2360C78400B060CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				797DEEA12360C78A00B060CF /* CoreFoundation.framework */,
+				797DEE9F2360C78400B060CF /* IOKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		797DEEA32360C78C00B060CF /* lockop-core */ = {
+			isa = PBXGroup;
+			children = (
+				790496612360C7AB00494732 /* include */,
+				790496672360C7AB00494732 /* Makefile */,
+				790496602360C7AB00494732 /* README.md */,
+				790496682360C7AB00494732 /* src */,
+			);
+			name = "lockop-core";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		797DEE932360C76F00B060CF /* lockop-core */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 797DEE9B2360C76F00B060CF /* Build configuration list for PBXNativeTarget "lockop-core" */;
+			buildPhases = (
+				797DEE902360C76F00B060CF /* Sources */,
+				797DEE912360C76F00B060CF /* Frameworks */,
+				797DEE922360C76F00B060CF /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "lockop-core";
+			productName = "lockop-core";
+			productReference = 797DEE942360C76F00B060CF /* lockop-core */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		797DEE8C2360C76F00B060CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = brylabs;
+				TargetAttributes = {
+					797DEE932360C76F00B060CF = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 797DEE8F2360C76F00B060CF /* Build configuration list for PBXProject "lockop-core" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 797DEE8B2360C76F00B060CF;
+			productRefGroup = 797DEE952360C76F00B060CF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				797DEE932360C76F00B060CF /* lockop-core */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		797DEE902360C76F00B060CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				790496762360C91E00494732 /* block.h in Sources */,
+				790496712360C7AC00494732 /* base58.cpp in Sources */,
+				790496722360C7AC00494732 /* block.cpp in Sources */,
+				790496752360C7AC00494732 /* util.cpp in Sources */,
+				790496702360C7AC00494732 /* address.cpp in Sources */,
+				790496742360C7AC00494732 /* merkleblock.cpp in Sources */,
+				790496732360C7AC00494732 /* main.cpp in Sources */,
+				7904966F2360C7AC00494732 /* Makefile in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		797DEE992360C76F00B060CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
+				OTHER_LDFLAGS = "";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		797DEE9A2360C76F00B060CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
+				OTHER_LDFLAGS = "";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		797DEE9C2360C76F00B060CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "/usr/local/Cellar/openssl@1.1/1.1.1d/include";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/usr/local/Cellar/openssl@1.1/1.1.1d/lib",
+				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
+				OTHER_LDFLAGS = "-lcrypto";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		797DEE9D2360C76F00B060CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "/usr/local/Cellar/openssl@1.1/1.1.1d/include";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/usr/local/Cellar/openssl@1.1/1.1.1d/lib",
+				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
+				OTHER_LDFLAGS = "-lcrypto";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		797DEE8F2360C76F00B060CF /* Build configuration list for PBXProject "lockop-core" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				797DEE992360C76F00B060CF /* Debug */,
+				797DEE9A2360C76F00B060CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		797DEE9B2360C76F00B060CF /* Build configuration list for PBXNativeTarget "lockop-core" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				797DEE9C2360C76F00B060CF /* Debug */,
+				797DEE9D2360C76F00B060CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 797DEE8C2360C76F00B060CF /* Project object */;
+}
