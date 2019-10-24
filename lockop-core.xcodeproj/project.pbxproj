@@ -309,10 +309,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = "/usr/local/Cellar/openssl@1.1/1.1.1d/include";
+				HEADER_SEARCH_PATHS = /usr/local/opt/openssl/include;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/usr/local/Cellar/openssl@1.1/1.1.1d/lib",
+					/usr/local/opt/openssl/lib,
 				);
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = "-lcrypto";
@@ -324,10 +324,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = "/usr/local/Cellar/openssl@1.1/1.1.1d/include";
+				HEADER_SEARCH_PATHS = /usr/local/opt/openssl/include;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/usr/local/Cellar/openssl@1.1/1.1.1d/lib",
+					/usr/local/opt/openssl/lib,
 				);
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = "-lcrypto";
